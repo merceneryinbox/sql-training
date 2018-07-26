@@ -4,8 +4,6 @@
 .idea/modules.xml
 .idea/sql-training.iml
 .idea/workspace.xml
-src/
-!/resources/DB_INSTALL.sql
 .idea/dataSources.local.xml
 .idea/dataSources/
 init_commit.patch
