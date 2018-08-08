@@ -69,3 +69,14 @@ where SALARY in (select max(SALARY) max_sal
                    join DENKLE.DEPARTMENTS d on e.DEPARTMENT_ID = d.DEPARTMENT_ID
                  group by DEPARTMENT_NAME)
 order by DEPARTMENT_ID asc;
+
+
+--Вывести список сотрудников, получающих заработную плату большую чем у непосредственного руководителя
+select
+  e.DEPARTMENT_ID,
+  e.EMPLOYEE_ID,
+  e.FIRST_NAME,
+  e.SALARY,
+  e.MANAGER_ID
+from DENKLE.EMPLOYEES e, DENKLE.EMPLOYEES m
+where e.MANAGER_ID = m.EMPLOYEE_ID and e.SALARY > m.SALARY;
