@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="training-db" uuid="bca30c91-c9e1-40d0-975f-b353207a04a8">
-      <driver-ref>h2.unified</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:default</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="@oraclebi.avalon.ru" uuid="a29db7d7-d039-479d-a611-121c231c66c4">
+    <data-source source="LOCAL" name="spbsty" uuid="37b96847-d244-499d-8942-bebe764fbdc9">
       <driver-ref>oracle</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@oraclebi.avalon.ru:1521:orcl12</jdbc-url>
-      <default-dialect>OracleSqlPlus</default-dialect>
       <driver-properties>
         <property name="v$session.program" value="DataGrip" />
       </driver-properties>
