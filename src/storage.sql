@@ -12,8 +12,6 @@ from DENKLE.EMPLOYEES
 where SALARY = (select max(SALARY)
                 from DENKLE.EMPLOYEES);
 
-
-
 --вторая самая высокая з-п в организации
 select max(SALARY)
 from DENKLE.EMPLOYEES
@@ -32,13 +30,12 @@ where SALARY = (select max(SALARY)
                 where SALARY not in (select max(SALARY)
                                      from DENKLE.EMPLOYEES));
 
-
 -- самые высокие зарплаты по отделам
 select distinct
   DEPARTMENT_ID,
   max(SALARY)
   over (
-    order by DEPARTMENT_ID range unbounded preceding)
+    order by DEPARTMENT_ID range unbounded preceding )
 from DENKLE.EMPLOYEES;
 
 select distinct
@@ -55,10 +52,6 @@ select distinct
     partition by DEPARTMENT_ID )
 from DENKLE.EMPLOYEES
 order by DEPARTMENT_ID;
-
-
-
-
 
 
 select
@@ -114,6 +107,20 @@ select
 from DENKLE.EMPLOYEES e1, DENKLE.EMPLOYEES e2
 where e1.SALARY > e2.SALARY and e1.MANAGER_ID = e2.EMPLOYEE_ID;
 
+select
+  emp.EMPLOYEE_ID,
+  emp.FIRST_NAME,
+  emp.SALARY,
+  ('--------------'),
+  man.FIRST_NAME,
+  man.SALARY,
+  (emp.SALARY - man.SALARY) as difference
+from
+  DENKLE.EMPLOYEES emp inner join DENKLE.EMPLOYEES man
+    on emp.MANAGER_ID = man.EMPLOYEE_ID and emp.SALARY > man.SALARY;
+
+
+
 --Вывести список сотрудников, не имеющих назначенного руководителя, работающего в том-же отделе
 select
   emp.DEPARTMENT_ID,
@@ -124,11 +131,13 @@ from DENKLE.EMPLOYEES emp left join DENKLE.EMPLOYEES man on man.EMPLOYEE_ID = em
 where emp.DEPARTMENT_ID <> man.DEPARTMENT_ID;
 
 select distinct
-  DEPARTMENT_ID,sum(SALARY)
+  DEPARTMENT_ID,
+  sum(SALARY)
   over (
     partition by DEPARTMENT_ID
     order by DEPARTMENT_ID range between unbounded preceding and current row ) eee
-from DENKLE.EMPLOYEES order by DEPARTMENT_ID;
+from DENKLE.EMPLOYEES
+order by DEPARTMENT_ID;
 
 select
   emp.DEPARTMENT_ID,
